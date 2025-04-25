@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="404 Page Not Found - Francesco Gioia, High-Fashion Photographer">
+  <title>404 - Page Not Found | Ariam Gioia</title>
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" as="script">
+  <!-- Google Fonts (Montserrat) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: "Monument Extended";
+      src: url("https://db.onlinewebfonts.com/t/55d433372d270829c51e2577a78ef12d.eot");
+      src: url("https://db.onlinewebfonts.com/t/55d433372d270829c51e2577a78ef12d.eot?#iefix") format("embedded-opentype"),
+           url("https://db.onlinewebfonts.com/t/55d433372d270829c51e2577a78ef12d.woff2") format("woff2"),
+           url("https://db.onlinewebfonts.com/t/55d433372d270829c51e2577a78ef12d.woff") format("woff"),
+           url("https://db.onlinewebfonts.com/t/55d433372d270829c51e2577a78ef12d.ttf") format("truetype"),
+           url("https://db.onlinewebfonts.com/t/55d433372d270829c51e2577a78ef12d.svg#Monument Extended") format("svg");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Monument Extended", "Montserrat", sans-serif;
+      background: #fff;
+      color: #000;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Navigation */
+    .navigation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: clamp(10px, 2vw, 20px) clamp(20px, 3vw, 40px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 600;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-brand {
+      font-family: "Monument Extended", "Montserrat", sans-serif;
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      text-transform: uppercase;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .nav-link {
+      font-family: "Monument Extended", "Montserrat", sans-serif;
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Marquee Tape Effect */
+    .marquee-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .marquee-tape {
+      position: absolute;
+      width: 200%;
+      background: #000;
+      color: #fff;
+      padding: clamp(10px, 1.5vw, 15px) 0;
+      white-space: nowrap;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+    }
+
+    .marquee-tape--top {
+      top: 20%;
+      transform: rotate(20deg);
+      transform-origin: top left;
+    }
+
+    .marquee-tape--bottom {
+      top: 60%;
+      transform: rotate(-5deg);
+      transform-origin: top left;
+    }
+
+    .marquee-text {
+      font-family: "Monument Extended", "Montserrat", sans-serif;
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      text-transform: uppercase;
+      color: #fff;
+      display: inline-block;
+      animation: marquee 20s linear infinite;
+    }
+
+    .marquee-text span {
+      margin: 0 30px;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* 404 Content */
+    .error-section {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(40px, 5vw, 80px) clamp(20px, 3vw, 40px);
+      z-index: 2;
+    }
+
+    .error-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.1;
+    }
+
+    .error-background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .error-code {
+      font-family: "Monument Extended", "Montserrat", sans-serif;
+      font-size: clamp(8rem, 15vw, 12rem);
+      text-transform: uppercase;
+      color: #000;
+      line-height: 1;
+      opacity: 0;
+    }
+
+    .error-message {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      font-weight: 400;
+      color: #000;
+      margin: 20px 0;
+      opacity: 0;
+    }
+
+    .error-button {
+      font-family: "Monument Extended", "Montserrat", sans-serif;
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      text-transform: uppercase;
+      padding: 15px 30px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      opacity: 0;
+      transition: background 0.3s ease;
+    }
+
+    .error-button:hover {
+      background: #333;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navigation {
+        padding: 15px 20px;
+      }
+
+      .nav-brand {
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
+      }
+
+      .nav-link {
+        font-size: clamp(0.9rem, 1.2vw, 1rem);
+      }
+
+      .marquee-tape--top {
+        top: 15%;
+      }
+
+      .marquee-tape--bottom {
+        top: 65%;
+      }
+
+      .marquee-text {
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
+      }
+
+      .error-code {
+        font-size: clamp(6rem, 12vw, 8rem);
+      }
+
+      .error-message {
+        font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+      }
+
+      .error-button {
+        font-size: clamp(0.9rem, 1.2vw, 1rem);
+        padding: 10px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .marquee-tape--top {
+        top: 10%;
+      }
+
+      .marquee-tape--bottom {
+        top: 70%;
+      }
+
+      .marquee-text {
+        font-size: clamp(0.8rem, 1.2vw, 1rem);
+      }
+
+      .error-code {
+        font-size: clamp(4rem, 10vw, 6rem);
+      }
+
+      .error-message {
+        font-size: clamp(0.8rem, 1.2vw, 1rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navigation">
+    <div class="nav-brand">Ariam GIOIA</div>
+    <a href="index.html" class="nav-link">MENU</a>
+  </nav>
+  <div class="marquee-container">
+    <div class="marquee-tape marquee-tape--top">
+      <div class="marquee-text">
+        <span>PAGE NOT FOUND • SORRY, THIS PAGE DOESN’T EXIST • RETURN TO HOME •</span>
+        <span>PAGE NOT FOUND • SORRY, THIS PAGE DOESN’T EXIST • RETURN TO HOME •</span>
+      </div>
+    </div>
+    <div class="marquee-tape marquee-tape--bottom">
+      <div class="marquee-text">
+        <span>PAGE NOT FOUND • SORRY, THIS PAGE DOESN’T EXIST • RETURN TO HOME •</span>
+        <span>PAGE NOT FOUND • SORRY, THIS PAGE DOESN’T EXIST • RETURN TO HOME •</span>
+      </div>
+    </div>
+  </div>
+  <div class="error-section">
+    <div class="error-background">
+      <video muted loop playsinline preload="auto">
+        <source src="https://media.istockphoto.com/id/1454129375/video/dark-skinned-handsome-man-having-a-slow-walk-in-the-town.mp4?s=mp4-640x640-is&k=20&c=RGs8DqEqZQ1RvT-yhjQ5YkhcNZ6agGeURK-l7yia2b4=" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <h1 class="error-code">404</h1>
+    <p class="error-message">Page Not Found</p>
+    <a href="index.html" class="error-button">Back to Home</a>
+  </div>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script defer>
+    // Animations for 404 Page
+    window.addEventListener('load', () => {
+      gsap.to('.error-code', {
+        opacity: 1,
+        scale: 1.1,
+        duration: 1,
+        ease: 'power4.out',
+      });
+
+      gsap.to('.error-message', {
+        opacity: 1,
+        y: -20,
+        duration: 0.8,
+        ease: 'power2.out',
+        delay: 0.3,
+      });
+
+      gsap.to('.error-button', {
+        opacity: 1,
+        y: -20,
+        duration: 0.8,
+        ease: 'power2.out',
+        delay: 0.5,
+      });
+    });
+  </script>
+</body>
+</html>
